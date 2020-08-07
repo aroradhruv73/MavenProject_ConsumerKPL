@@ -1,0 +1,487 @@
+package EMAConsumer;
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+//import java.util.List;
+import java.util.*; //ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.services.kinesis.AmazonKinesisClient;
+import com.amazonaws.services.kinesis.model.PutRecordRequest;
+import com.amazonaws.services.kinesis.model.PutRecordsRequest;
+import com.amazonaws.services.kinesis.model.PutRecordsRequestEntry;
+import com.thomsonreuters.ema.access.AckMsg;
+import com.thomsonreuters.ema.access.Data;
+import com.thomsonreuters.ema.access.DataType;
+import com.thomsonreuters.ema.access.DataType.DataTypes;
+import com.thomsonreuters.ema.access.ElementList;
+import com.thomsonreuters.ema.access.EmaFactory;
+import com.thomsonreuters.ema.access.FieldEntry;
+import com.thomsonreuters.ema.access.FieldList;
+import com.thomsonreuters.ema.access.GenericMsg;
+import com.thomsonreuters.ema.access.Map;
+import com.thomsonreuters.ema.access.MapEntry;
+import com.thomsonreuters.ema.access.Msg;
+import com.thomsonreuters.ema.access.OmmArray;
+import com.thomsonreuters.ema.access.OmmConsumer;
+import com.thomsonreuters.ema.access.OmmConsumerClient;
+import com.thomsonreuters.ema.access.OmmConsumerConfig;
+import com.thomsonreuters.ema.access.OmmConsumerEvent;
+import com.thomsonreuters.ema.access.RefreshMsg;
+import com.thomsonreuters.ema.access.ServiceEndpointDiscovery;
+import com.thomsonreuters.ema.access.ServiceEndpointDiscoveryClient;
+import com.thomsonreuters.ema.access.ServiceEndpointDiscoveryEvent;
+import com.thomsonreuters.ema.access.ServiceEndpointDiscoveryOption;
+import com.thomsonreuters.ema.access.ServiceEndpointDiscoveryResp;
+import com.thomsonreuters.ema.access.StatusMsg;
+import com.thomsonreuters.ema.access.UpdateMsg;
+import com.thomsonreuters.ema.rdm.EmaRdm;
+
+//import com.amazonaws.auth.AWSCredentialsProvider;
+//import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+
+class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
+{
+	//private KinesisClient kClient;
+	//Region region1 = Region.US_EAST_1;
+	//kClient = KinesisClient.builder().region("US_EAST_1").build();
+	
+	private AmazonKinesisClient kClient;
+	List<PutRecordsRequestEntry> putRecordsRequestEntryList = new ArrayList<>(); //new ArrayList<>();
+	int counter = 0; int batchSize = 500;
+	
+	public void createKinesisClient()
+	{
+		AWSCredentials cred = new com.amazonaws.auth.profile.ProfileCredentialsProvider().getCredentials(); 
+		kClient = new AmazonKinesisClient(cred);		
+		//Region region1 = Region.US_EAST_1;
+		//kClient = KinesisClient.builder().region("US_EAST_1").build();
+	}
+	
+	public void onRefreshMsg(RefreshMsg refreshMsg, OmmConsumerEvent event)
+	{
+		
+		/*String data = refreshMsg.toString();
+		int spacesToIndentEachLevel = 2;
+		JSONObject jsonResponse = new JSONObject(data);
+		System.out.println(jsonResponse.toString(spacesToIndentEachLevel)); */
+		
+		JSONObject jsonResponse = null; //= new JSONObject();
+		//System.out.println(refreshMsg.toString());
+		String messageType = "RefreshMsg";
+		if (DataType.DataTypes.FIELD_LIST == refreshMsg.payload().dataType())
+			jsonResponse = decode(refreshMsg.payload().fieldList(),refreshMsg.name(),messageType);
+
+		    
+		//System.out.println(jsonResponse.toString(1));
+		
+		/*PutRecordRequest request = new PutRecordRequest(); //.builder().partitonKey()
+		request.setStreamName("testStream_LoadTesting");
+		request.setData(ByteBuffer.wrap(jsonResponse.toString().getBytes()));
+		request.setPartitionKey("elektron-capture");
+		kClient.putRecord(request);*/
+		
+		//Aggregation Logic
+		readRecordsAndSubmit(jsonResponse);
+		
+	}
+	
+	public void onUpdateMsg(UpdateMsg updateMsg, OmmConsumerEvent event) 
+	{
+		JSONObject jsonResponse = null;
+		String messageType = "UpdateMsg";
+		//System.out.println(updateMsg.toString());
+		if (DataType.DataTypes.FIELD_LIST == updateMsg.payload().dataType())
+			jsonResponse = decode(updateMsg.payload().fieldList(),updateMsg.name(),messageType);
+		
+		//System.out.println(jsonResponse.toString(1));
+
+		/*PutRecordRequest request = new PutRecordRequest(); //.builder().partitonKey()
+		request.setStreamName("testStream_LoadTesting");
+		request.setData(ByteBuffer.wrap(jsonResponse.toString().getBytes()));
+		request.setPartitionKey("elektron-capture");
+		kClient.putRecord(request);*/
+		
+		//Aggregation Logic
+		readRecordsAndSubmit(jsonResponse);
+	}
+	
+	public void readRecordsAndSubmit(JSONObject jsonObject)
+	{
+		PutRecordsRequestEntry entry = new PutRecordsRequestEntry();
+		entry.setData(ByteBuffer.wrap(jsonObject.toString().getBytes()));
+		entry.setPartitionKey("elektron-capture"); 
+		putRecordsRequestEntryList.add(entry);
+		counter++;
+		
+		if(counter == batchSize) {
+			PutRecordsRequest putRecordsRequest = new PutRecordsRequest();
+			putRecordsRequest.setStreamName("testStream_Aggregation");
+			putRecordsRequest.setRecords(putRecordsRequestEntryList);
+			kClient.putRecords(putRecordsRequest);
+			System.out.println("Submitted Records = " + putRecordsRequestEntryList.size());
+			putRecordsRequestEntryList = new ArrayList<>();
+			counter = 0;
+		}
+	}
+
+	public void onStatusMsg(StatusMsg statusMsg, OmmConsumerEvent event) 
+	{
+		//System.out.println(statusMsg);
+	}
+
+	public void onGenericMsg(GenericMsg genericMsg, OmmConsumerEvent consumerEvent){}
+	public void onAckMsg(AckMsg ackMsg, OmmConsumerEvent consumerEvent){}
+	public void onAllMsg(Msg msg, OmmConsumerEvent consumerEvent){}
+	
+	public JSONObject decode(FieldList fieldList,String name,String msgType)
+	{
+		JSONObject mainObj = new JSONObject();
+		mainObj.put("MessageType", msgType);
+		mainObj.put("RICName",name);
+		//mainObj.put("Fields",new JSONArray());
+		String value = null;
+		//JSONArray ary = mainObj.getJSONArray("Fields");
+		JSONObject subObj = new JSONObject();
+		
+		for (FieldEntry fieldEntry : fieldList)
+		{
+			//System.out.print("Fid: " + fieldEntry.fieldId() + " Name = " + fieldEntry.name() + " DataType: " + DataType.asString(fieldEntry.load().dataType()) + " Value: ");
+			
+			//System.out.print(fieldEntry.name());
+			
+			if (Data.DataCode.BLANK == fieldEntry.code())
+				//System.out.println(" blank");
+			    value = " blank";
+			else
+				switch (fieldEntry.loadType())
+				{
+				case DataTypes.REAL :
+					//System.out.println(fieldEntry.real().asDouble());
+					value = fieldEntry.real().toString(); 
+					break;
+				case DataTypes.DATE :
+					//System.out.println(fieldEntry.date().day() + " / " + fieldEntry.date().month() + " / " + fieldEntry.date().year());
+					value = fieldEntry.date().day() + " / " + fieldEntry.date().month() + " / " + fieldEntry.date().year();
+					break;
+				case DataTypes.TIME :
+					//System.out.println(fieldEntry.time().hour() + ":" + fieldEntry.time().minute() + ":" + fieldEntry.time().second() + ":" + fieldEntry.time().millisecond());
+					value = fieldEntry.time().hour() + ":" + fieldEntry.time().minute() + ":" + fieldEntry.time().second() + ":" + fieldEntry.time().millisecond();
+					break;
+				case DataTypes.DATETIME :
+					/*System.out.println(fieldEntry.dateTime().day() + " / " + fieldEntry.dateTime().month() + " / " +
+						fieldEntry.dateTime().year() + "." + fieldEntry.dateTime().hour() + ":" + 
+						fieldEntry.dateTime().minute() + ":" + fieldEntry.dateTime().second() + ":" + 
+						fieldEntry.dateTime().millisecond() + ":" + fieldEntry.dateTime().microsecond()+ ":" + 
+						fieldEntry.dateTime().nanosecond());*/
+					value = fieldEntry.dateTime().day() + " / " + fieldEntry.dateTime().month() + " / " +
+							fieldEntry.dateTime().year() + "." + fieldEntry.dateTime().hour() + ":" + 
+							fieldEntry.dateTime().minute() + ":" + fieldEntry.dateTime().second() + ":" + 
+							fieldEntry.dateTime().millisecond() + ":" + fieldEntry.dateTime().microsecond()+ ":" + 
+							fieldEntry.dateTime().nanosecond();
+					break;
+				case DataTypes.INT :
+					//System.out.println(fieldEntry.intValue());
+					value = fieldEntry.toString();
+					break;
+				case DataTypes.UINT :
+					//System.out.println(fieldEntry.uintValue());
+					value = fieldEntry.toString();
+					break;
+				case DataTypes.ASCII :
+					//System.out.println(fieldEntry.ascii());
+					value = fieldEntry.ascii().toString();
+					break;
+				case DataTypes.ENUM :
+					//System.out.println(fieldEntry.hasEnumDisplay() ? fieldEntry.enumDisplay() : fieldEntry.enumValue());
+					value = fieldEntry.hasEnumDisplay() ? Integer.toString(fieldEntry.enumValue()) : fieldEntry.enumDisplay().toString();
+					break;
+				case DataTypes.RMTES :
+					//System.out.println(fieldEntry.rmtes());
+					value = fieldEntry.rmtes().toString();
+					break;
+				case DataTypes.ERROR :
+					//System.out.println("(" + fieldEntry.error().errorCodeAsString() + ")");
+					value = fieldEntry.error().errorCodeAsString();
+					break;
+				default :
+					System.out.println();
+					break;
+				}
+			//JSONObject subObj = new JSONObject();
+			//subObj.put("FieldName", fieldEntry.name());
+			//subObj.put("Value",value);
+			subObj.put(fieldEntry.name(), value);
+			//ary.put(subObj);
+		}
+		mainObj.put("Fields", subObj);
+		/*try
+		{
+			FileWriter file = new FileWriter("c:/JsonFormat/json_output.json");
+			file.write(mainObj.toString(1));
+	        file.close();
+		}catch(IOException e) {
+	         e.printStackTrace();
+	    }
+		System.out.println("JSON file created: " + mainObj.toString(1));*/
+		return mainObj;
+	}
+
+	public void onSuccess(ServiceEndpointDiscoveryResp serviceEndpointResp, ServiceEndpointDiscoveryEvent event)
+	{
+		System.out.println(serviceEndpointResp); // dump service discovery endpoints
+		
+		for(int index = 0; index < serviceEndpointResp.serviceEndpointInfoList().size(); index++)
+		{
+			List<String> locationList = serviceEndpointResp.serviceEndpointInfoList().get(index).locationList();
+			
+			if(locationList.size() == 2) // Get an endpoint that provides auto failover for the specified location.
+			{
+				if(locationList.get(0).startsWith(Consumer.location))
+				{
+					Consumer.host = serviceEndpointResp.serviceEndpointInfoList().get(index).endpoint();
+					Consumer.port = serviceEndpointResp.serviceEndpointInfoList().get(index).port();
+					break;
+				}
+			}
+		}
+	}
+
+	public void onError(String errorText, ServiceEndpointDiscoveryEvent event)
+	{
+		System.out.println("Failed to query EDP-RT service discovery. Error text: " + errorText);
+	}
+}
+
+public class Consumer
+{
+	static String userName;
+	static String password;
+	static String clientId;
+	static String proxyHostName;
+	static String proxyPort = "-1";
+	static String proxyUserName;
+	static String proxyPassword;
+	static String proxyDomain;
+	static String proxyKrb5Configfile;
+	public static String host;
+	public static String port;
+	public static String location = "us-east";
+	
+	public static Properties properties;
+	
+	static void printHelp()
+	{
+	    System.out.println("\nOptions:\n" + "  -?\tShows this usage\n"
+	    		+ "  -username machine ID to perform authorization with the\r\n" 
+	    		+ "\ttoken service (mandatory).\n"
+	    		+ "  -password password to perform authorization with the token \r\n"
+	    		+ "\tservice (mandatory).\n"
+	    		+ "  -location location to get an endpoint from EDP-RT service \r\n"
+	    		+ "\tdiscovery. Defaults to \"us-east\" (optional).\n"
+	    		+ "  -clientId client ID for application making the request to \r\n" 
+	    		+ "\tEDP token service, also known as AppKey generated using an AppGenerator (mandatory).\n"
+	    		+ "  -keyfile keystore file for encryption (mandatory).\n"
+	    		+ "  -keypasswd keystore password for encryption (mandatory).\n"
+	    		+ "\nOptional parameters for establishing a connection and sending requests through a proxy server:\n"
+	    		+ "  -ph Proxy host name (optional).\n"
+	    		+ "  -pp Proxy port number (optional).\n"
+	    		+ "  -plogin User name on proxy server (optional).\n"
+	    		+ "  -ppasswd Password on proxy server (optional).\n" 
+	    		+ "  -pdomain Proxy Domain (optional).\n"
+	    		+ "  -krbfile KRB File location and name. Needed for Negotiate/Kerberos \r\n" 
+	    		+ "\tand Kerberos authentications (optional).\n"
+	    		+ "\n");
+	}
+	
+	
+	static boolean readCommandlineArgs(String[] args, OmmConsumerConfig config)
+	{
+	    try
+	    {
+	        int argsCount = 0;
+	        Consumer cons = new Consumer();
+	        
+	        Properties properties = new Properties();
+	        InputStream fs = cons.getClass().getClassLoader().getResourceAsStream("config.properties"); 
+	        properties.load(fs);
+	        
+	        userName = properties.getProperty("userName");
+	        password = properties.getProperty("password");
+	        clientId = properties.getProperty("clientId");
+	        config.tunnelingKeyStoreFile(properties.getProperty("keyfile"));
+			config.tunnelingSecurityProtocol("TLS");
+	        config.tunnelingKeyStorePasswd(properties.getProperty("keypasswd"));
+	        proxyHostName = null;
+	        proxyPort = null;
+	        proxyUserName = null;
+	        proxyPassword = null;
+	        proxyDomain = null;
+	        proxyKrb5Configfile = null;
+	        
+	        if ( userName == null || password == null || clientId == null)
+			{
+				System.out.println("Username, password, and clientId must be specified on the command line. Exiting...");
+				printHelp();
+				return false;
+			}
+     }
+     catch (Exception e)
+     {
+     	printHelp();
+         return false;
+     }
+		return true;
+	}
+	
+	static void createProgramaticConfig(Map configDb)
+	{
+		Map elementMap = EmaFactory.createMap();
+		ElementList elementList = EmaFactory.createElementList();
+		ElementList innerElementList = EmaFactory.createElementList();
+		
+		innerElementList.add(EmaFactory.createElementEntry().ascii("Channel", "Channel_1"));
+		
+		elementMap.add(EmaFactory.createMapEntry().keyAscii("Consumer_1", MapEntry.MapAction.ADD, innerElementList));
+		innerElementList.clear();
+		
+		elementList.add(EmaFactory.createElementEntry().map("ConsumerList", elementMap));
+		elementMap.clear();
+		
+		configDb.add(EmaFactory.createMapEntry().keyAscii("ConsumerGroup", MapEntry.MapAction.ADD, elementList));
+		elementList.clear();
+		
+		innerElementList.add(EmaFactory.createElementEntry().ascii("ChannelType", "ChannelType::RSSL_ENCRYPTED"));
+		innerElementList.add(EmaFactory.createElementEntry().ascii("Host", host));
+		innerElementList.add(EmaFactory.createElementEntry().ascii("Port", port));
+		innerElementList.add(EmaFactory.createElementEntry().intValue("EnableSessionManagement", 1));
+		
+		elementMap.add(EmaFactory.createMapEntry().keyAscii("Channel_1", MapEntry.MapAction.ADD, innerElementList));
+		innerElementList.clear();
+		
+		elementList.add(EmaFactory.createElementEntry().map("ChannelList", elementMap));
+		elementMap.clear();
+		
+		configDb.add(EmaFactory.createMapEntry().keyAscii("ChannelGroup", MapEntry.MapAction.ADD, elementList));
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		OmmConsumer consumer = null;
+		ServiceEndpointDiscovery serviceDiscovery = null;
+		try
+		{
+			AppClient appClient = new AppClient();
+			appClient.createKinesisClient();
+			serviceDiscovery = EmaFactory.createServiceEndpointDiscovery();
+			OmmConsumerConfig config = EmaFactory.createOmmConsumerConfig();
+			Map configDb = EmaFactory.createMap();
+			
+			if (!readCommandlineArgs(args, config)) return;
+			
+			serviceDiscovery.registerClient(EmaFactory.createServiceEndpointDiscoveryOption().username(userName)
+					.password(password).clientId(clientId).transport(ServiceEndpointDiscoveryOption.TransportProtocol.TCP)
+					.proxyHostName(proxyHostName).proxyPort(proxyPort).proxyUserName(proxyUserName)
+					.proxyPassword(proxyPassword).proxyDomain(proxyDomain).proxyKRB5ConfigFile(proxyKrb5Configfile), appClient); 
+			
+			if ( host == null || port == null )
+			{
+				System.out.println("Both hostname and port are not avaiable for establishing a connection with ERT in cloud. Exiting...");
+				return;
+			}
+			
+			createProgramaticConfig(configDb);
+			
+			if ( (proxyHostName == null) && (proxyPort == "-1") )
+			{
+				consumer  = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").username(userName).password(password)
+					.clientId(clientId).config(configDb));
+			}
+			else
+			{
+				consumer  = EmaFactory.createOmmConsumer(config.consumerName("Consumer_1").username(userName).password(password)
+					.clientId(clientId).config(configDb).tunnelingProxyHostName(proxyHostName).tunnelingProxyPort(proxyPort)
+					.tunnelingCredentialUserName(proxyUserName).tunnelingCredentialPasswd(proxyPassword).tunnelingCredentialDomain(proxyDomain)
+					.tunnelingCredentialKRB5ConfigFile(proxyKrb5Configfile)); 
+			}
+			
+			System.out.println("reading csv start");
+			
+			 String line = null;
+
+			 //Consumer cons = new Consumer();
+			 /*InputStream is = Consumer.class.getResourceAsStream("../RIC.csv");
+			 InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+			 BufferedReader br = new BufferedReader(streamReader);*/
+			 
+			 BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Operations\\Desktop\\RIC.csv"));
+			 //BufferedReader br = new BufferedReader(new FileReader("//home//ubuntu//RIC.csv"));
+			 //BufferedReader br = new BufferedReader(new FileReader("RIC.csv"));
+			 
+			//Prepare multiple field IDs in an OmmArray
+			OmmArray array = EmaFactory.createOmmArray();
+			array.fixedWidth(2);
+			array.add(EmaFactory.createOmmArrayEntry().intValue(363));//FID363 for ASK_YIELD
+			array.add(EmaFactory.createOmmArrayEntry().intValue(362));//FID362 for BID_YIELD
+			array.add(EmaFactory.createOmmArrayEntry().intValue(25));//FID25 for ASK
+			array.add(EmaFactory.createOmmArrayEntry().intValue(22));//FID22 for BID
+			array.add(EmaFactory.createOmmArrayEntry().intValue(4));//FID4 for RDN_EXCHID
+			array.add(EmaFactory.createOmmArrayEntry().intValue(365));//FID365 for HIGH_YLD
+			array.add(EmaFactory.createOmmArrayEntry().intValue(366));//FID366 for LOW_YLD
+			array.add(EmaFactory.createOmmArrayEntry().intValue(875));//FID365 for VALUE_DT1
+			array.add(EmaFactory.createOmmArrayEntry().intValue(1010));//FID365 for VALUE_TS1
+			
+			//Prepare multiple RICs in an OmmArray
+			OmmArray arrayI = EmaFactory.createOmmArray();
+			//arrayI.add(EmaFactory.createOmmArrayEntry().ascii("JPY=")); //("FR036700122="));
+			//arrayI.add(EmaFactory.createOmmArrayEntry().ascii("FR040974920="));
+			
+			System.out.println("Reading csv");
+			
+			while ((line = br.readLine()) != null) {
+			      String[] values = line.split(",");
+			      for (String str : values) {
+	          		   //System.out.println(str);
+	          		   arrayI.add(EmaFactory.createOmmArrayEntry().ascii(str));
+			      }
+			    }
+			br.close();
+
+			//Combine both Batch and View and add them to ElementList
+			ElementList batchView = EmaFactory.createElementList();
+			batchView.add(EmaFactory.createElementEntry().array(EmaRdm.ENAME_BATCH_ITEM_LIST, arrayI));
+			batchView.add(EmaFactory.createElementEntry().uintValue(EmaRdm.ENAME_VIEW_TYPE, 1));
+			batchView.add(EmaFactory.createElementEntry().array(EmaRdm.ENAME_VIEW_DATA, array)); 
+				
+			System.out.println("registerClient");
+			//consumer.registerClient(EmaFactory.createReqMsg().serviceName("ELEKTRON_DD").name("JPY="), appClient); //GB046842561=
+			consumer.registerClient(EmaFactory.createReqMsg().serviceName("ELEKTRON_DD").payload(batchView), appClient);
+			
+			System.out.println("registerClient done");
+			
+			while(true)
+			     Thread.sleep(1000); // API calls onRefreshMsg(), onUpdateMsg() and onStatusMsg()
+
+		} 
+		catch (InterruptedException excp)
+		//catch (InterruptedException | OmmException excp)
+		{
+			System.out.println(excp.getMessage());
+		}
+		finally 
+		{
+			if (consumer != null) consumer.uninitialize();
+			if (serviceDiscovery != null) serviceDiscovery.uninitialize();
+		}
+	}
+}

@@ -1,0 +1,18 @@
+package EMAConsumer;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		try {
+			System.out.println("Before sleep");
+			Thread.sleep(1000);
+			System.out.println("After sleep");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}

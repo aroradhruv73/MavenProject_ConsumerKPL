@@ -589,7 +589,9 @@ public class Consumer
 	{
 		//Logger logger = LogManager.getLogger(Consumer.class);
 		
-		logger.info("Starting");
+		//logger.info("Starting");
+		
+		System.out.println("Main Program starting");
 		
 		OmmConsumer consumer = null;
 		ServiceEndpointDiscovery serviceDiscovery = null;

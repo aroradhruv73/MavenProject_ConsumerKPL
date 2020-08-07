@@ -30,6 +30,8 @@ EXPOSE ${PORT}
 COPY --from=builder /usr/src/target/*.jar /usr/src/app.jar
 COPY --from=builder /usr/src/dhruv_keystore.jks /usr/src/dhruv_keystore.jks
 
+RUN ls
+
 RUN chmod +x app.jar
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 

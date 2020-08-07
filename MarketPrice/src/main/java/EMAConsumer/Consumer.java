@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
-
+import java.util.stream.Collectors;
 
 import org.json.JSONObject;
 
@@ -514,9 +514,13 @@ public class Consumer
 	        int argsCount = 0;
 	        Consumer cons = new Consumer();
 	        
+	        ClassLoader classLoader = cons.getClass().getClassLoader();
+            InputStream fs = classLoader.getResourceAsStream("default_config.properties");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fs));
+            
 	        Properties properties = new Properties();
-	        InputStream fs = cons.getClass().getClassLoader().getResourceAsStream("default_config.properties"); 
-	        properties.load(fs);
+	        //InputStream fs = cons.getClass().getClassLoader().getResourceAsStream("default_config.properties"); 
+	        properties.load(reader);
 	        
 	        userName = properties.getProperty("userName");
 	        password = properties.getProperty("password");
@@ -579,6 +583,7 @@ public class Consumer
 		
 		configDb.add(EmaFactory.createMapEntry().keyAscii("ChannelGroup", MapEntry.MapAction.ADD, elementList));
 	}
+	
 	
 	public static void main(String[] args) throws IOException
 	{

@@ -2731,3 +2731,13 @@ org.eclipse.core.runtime.CoreException: Could not read maven project
 2020-08-08 18:39:51,006 [Worker-204: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-08-08 18:39:51,007 [Worker-204: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2020-08-08 18:39:51,019 [Worker-204: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-08-08 19:45:38,493 [Worker-234: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Overbond:MarketPrice:0.2 @ C:\MavenProject_ConsumerKPL\MarketPrice\pom.xml.
+2020-08-08 19:45:46,297 [Worker-234: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-08-08 19:45:46,310 [Worker-234: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-08-08 19:45:46,312 [Worker-234: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-08-08 19:45:46,322 [Worker-234: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-08-08 19:45:46,851 [Worker-236: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\MavenProject_ConsumerKPL\MarketPrice
+2020-08-08 19:45:46,852 [Worker-236: Launching New_configuration] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean compile assembly:single
+2020-08-08 19:45:49,246 [Worker-238: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-08-08 19:45:49,264 [Worker-238: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 3 resources
+2020-08-08 19:45:49,337 [Worker-238: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!

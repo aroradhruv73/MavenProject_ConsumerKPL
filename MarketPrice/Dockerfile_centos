@@ -7,8 +7,9 @@ WORKDIR /usr/src
 # copy other source files (keep in image)
 COPY . /usr/src/
 
-RUN mvn clean package
+#RUN mvn clean package
 
-RUN cp /usr/src/target/*.jar /usr/src/target/app.jar
+#RUN cp /usr/src/target/*.jar /usr/src/target/app.jar
+RUN cp /usr/src/*.* /usr/src/*.*
 
 CMD ["java", "-Duser.timezone=America/New_York", "java -cp app.jar EMAConsumer.Consumer"]

@@ -603,8 +603,9 @@ public class Consumer
 			OmmConsumerConfig config = EmaFactory.createOmmConsumerConfig();
 			Map configDb = EmaFactory.createMap();
 			
+			System.out.println("Before Reading From Properties File");
 			if (!readCommandlineArgs(args, config)) return;
-			
+			System.out.println("After Reading From Properties File");
 			serviceDiscovery.registerClient(EmaFactory.createServiceEndpointDiscoveryOption().username(userName)
 					.password(password).clientId(clientId).transport(ServiceEndpointDiscoveryOption.TransportProtocol.TCP)
 					.proxyHostName(proxyHostName).proxyPort(proxyPort).proxyUserName(proxyUserName)

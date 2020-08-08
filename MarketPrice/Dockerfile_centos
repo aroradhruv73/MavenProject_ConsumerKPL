@@ -1,0 +1,14 @@
+FROM centos:7
+
+RUN yum install maven -y
+
+WORKDIR /usr/src
+
+# copy other source files (keep in image)
+COPY . /usr/src/
+
+RUN mvn clean package
+
+RUN cp /usr/src/target/*.jar /usr/src/target/app.jar
+
+CMD ["java", "-Duser.timezone=America/New_York", "java -cp app.jar EMAConsumer.Consumer"]

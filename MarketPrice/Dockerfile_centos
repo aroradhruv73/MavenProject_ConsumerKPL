@@ -10,6 +10,7 @@ COPY . /usr/src/
 #RUN mvn clean package
 
 #RUN cp /usr/src/target/*.jar /usr/src/target/app.jar
-RUN cp /usr/src/*.* /usr/src/*.*
+RUN cp /usr/src/ /usr/src/
 
-CMD ["java", "-Duser.timezone=America/New_York", "java -cp app.jar EMAConsumer.Consumer"]
+#CMD ["java", "-Duser.timezone=America/New_York", "java -cp app.jar EMAConsumer.Consumer"]
+CMD ["java", "-Duser.timezone=America/New_York", "java -cp MarketPrice-0.2-jar-with-dependencies.jar EMAConsumer.Consumer"]

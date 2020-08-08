@@ -73,8 +73,8 @@ import com.thomsonreuters.ema.access.StatusMsg;
 import com.thomsonreuters.ema.access.UpdateMsg;
 import com.thomsonreuters.ema.rdm.EmaRdm;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+/*import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;*/
 
 //import com.amazonaws.auth.AWSCredentialsProvider;
 //import com.amazonaws.auth.profile.ProfileCredentialsProvider;
@@ -85,12 +85,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 	//Region region1 = Region.US_EAST_1;
 	//kClient = KinesisClient.builder().region("US_EAST_1").build();
 	
-		
-	//private static final Logger log = LoggerFactory.getLogger(AppClient.class);
-    
-    //private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
-	
-	private static Logger logger = LogManager.getLogger(AppClient.class);
+	/*private static Logger logger = LogManager.getLogger(AppClient.class);*/
     
     /**   * Timestamp we'll attach to every record */
     private static final String TIMESTAMP = Long.toString(System.currentTimeMillis());
@@ -140,7 +135,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.error("Exception during the record submit in RefreshMsg",e);
+			/*logger.error("Exception during the record submit in RefreshMsg",e);*/
 		}
 		/* ------------------ends here */
 		
@@ -175,7 +170,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			logger.error("Exception during the record submit in UpdateMsg",e);
+			/*logger.error("Exception during the record submit in UpdateMsg",e);*/
 		}
 		/* ------------------ends here */
 
@@ -205,17 +200,19 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
                     Attempt last = ((UserRecordFailedException) t).getResult().getAttempts().get(attempts);
                     if(attempts > 1) {
                         Attempt previous = ((UserRecordFailedException) t).getResult().getAttempts().get(attempts - 1);
-                        logger.error(String.format(
+                        /*logger.error(String.format(
                                 "Record failed to put - %s : %s. Previous failure - %s : %s",
-                                last.getErrorCode(), last.getErrorMessage(), previous.getErrorCode(), previous.getErrorMessage()));
+                                last.getErrorCode(), last.getErrorMessage(), previous.getErrorCode(), previous.getErrorMessage()));*/
                     }else{
-                        logger.error(String.format(
+                        /*logger.error(String.format(
                                 "Record failed to put - %s : %s.",
-                                last.getErrorCode(), last.getErrorMessage()));
+                                last.getErrorCode(), last.getErrorMessage()));*/
+                    	System.out.println("Record failed to put");
                     }
 
                 }
-                logger.error("Exception during put", t);
+                /*logger.error("Exception during put", t);*/
+                System.out.println("Exception during put");
             }
 
             @Override
@@ -238,7 +235,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 				} catch (UnsupportedEncodingException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					logger.error("Exception during the record submit",e);
+					/*logger.error("Exception during the record submit",e); */
 				}
             }
         };
@@ -480,7 +477,7 @@ public class Consumer
 	
 	public static Properties properties;
 	
-	private static Logger logger = LogManager.getLogger(Consumer.class);
+	/*private static Logger logger = LogManager.getLogger(Consumer.class);*/
 	
 	static void printHelp()
 	{
@@ -547,7 +544,7 @@ public class Consumer
      catch (Exception e)
      {
      	printHelp();
-     	logger.error("Reading authentication key values from configuration",e);
+     	/*logger.error("Reading authentication key values from configuration",e);*/
          return false;
      }
 		return true;
@@ -688,7 +685,7 @@ public class Consumer
 			batchView.add(EmaFactory.createElementEntry().array(EmaRdm.ENAME_VIEW_DATA, array)); 
 				
 			System.out.println("registerClient");
-			logger.info("registerClient");
+			/*logger.info("registerClient");*/
 			//consumer.registerClient(EmaFactory.createReqMsg().serviceName("ELEKTRON_DD").name("JPY="), appClient); //GB046842561=
 			consumer.registerClient(EmaFactory.createReqMsg().serviceName("ELEKTRON_DD").payload(batchView), appClient);
 			
@@ -701,7 +698,7 @@ public class Consumer
 		catch (InterruptedException excp)
 		//catch (InterruptedException | OmmException excp)
 		{
-			logger.error("Exception in Main method",excp.getMessage());
+			//logger.error("Exception in Main method",excp.getMessage());
 			System.out.println(excp.getMessage());
 		}
 		finally 

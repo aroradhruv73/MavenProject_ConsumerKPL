@@ -134,7 +134,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 		
 		//System.out.println(jsonResponse.toString(1));
 		
-		/* KPL way of submitting data */
+		/* KPL way of submitting data */ 
 		try {
 			readRecordsAndSubmitToKPL(jsonResponse);
 		} catch (InterruptedException e) {
@@ -169,7 +169,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
 		
 		//System.out.println(jsonResponse.toString(1));
 		
-		/* KPL way of submitting data */
+		/* KPL way of submitting data */ 
 		try {
 			readRecordsAndSubmitToKPL(jsonResponse);
 		} catch (InterruptedException e) {
@@ -664,6 +664,8 @@ public class Consumer
 			array.add(EmaFactory.createOmmArrayEntry().intValue(366));//FID366 for LOW_YLD
 			array.add(EmaFactory.createOmmArrayEntry().intValue(875));//FID365 for VALUE_DT1
 			array.add(EmaFactory.createOmmArrayEntry().intValue(1010));//FID365 for VALUE_TS1
+			array.add(EmaFactory.createOmmArrayEntry().intValue(178));//FID178 for TRDVOL_1
+			array.add(EmaFactory.createOmmArrayEntry().intValue(32));//FID32 for ACVOL_1
 			
 			//Prepare multiple RICs in an OmmArray
 			OmmArray arrayI = EmaFactory.createOmmArray();

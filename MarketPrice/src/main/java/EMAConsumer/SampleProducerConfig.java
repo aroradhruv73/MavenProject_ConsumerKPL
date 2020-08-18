@@ -41,12 +41,13 @@ public class SampleProducerConfig {
      *
      * @see {@link KinesisProducerConfiguration#setRecordTtl(long)}
      */
-    private static final int RECORDS_PER_SECOND_DEFAULT = 500;
+    private static final int RECORDS_PER_SECOND_DEFAULT = 5;  //was set to 500
 
     /**
      * Change this to your stream name.
      */
-    public static final String STREAM_NAME_DEFAULT = "testKPL";
+    //public static final String STREAM_NAME_DEFAULT = "KPLStream";
+    public static final String STREAM_NAME_DEFAULT = "testingKPLStream";
 
     /**
      * Change this to the region you are using.
@@ -124,8 +125,8 @@ public class SampleProducerConfig {
         bufferTime = 1000;
         threadingModel = KinesisProducerConfiguration.ThreadingModel.PER_REQUEST.name();
         threadPoolSize = 0;
-        aggregationEnabled = false; 
-        aggregationMaxCount = 1; //Long.parseLong("4294967295");
+        aggregationEnabled = true; 
+        aggregationMaxCount = Long.parseLong("4294967295");
         aggregationMaxSize = 51200; 
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

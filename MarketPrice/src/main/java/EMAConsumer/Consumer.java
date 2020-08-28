@@ -221,7 +221,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
             @Override
             public void onSuccess(UserRecordResult result) {
                 completed.getAndIncrement();
-                //logger.info("Sucessfully done");
+                logger.info("Sucessfully done");
             }
         };
         
@@ -269,7 +269,7 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
         // finished all calls to putRecord, but the records may still be
         // in-flight. We will additionally wait for all records to actually
         // finish later.
-      //EXECUTOR.awaitTermination(config.getSecondsToRun() + 1, TimeUnit.SECONDS);
+      EXECUTOR.awaitTermination(config.getSecondsToRun() + 1, TimeUnit.SECONDS);
         
         // If you need to shutdown your application, call flushSync() first to
         // send any buffered records. This method will block until all records
@@ -280,15 +280,15 @@ class AppClient implements OmmConsumerClient, ServiceEndpointDiscoveryClient
         // on the time limit set with Configuration.setRecordMaxBufferedTime()
         //log.info("Waiting for remaining puts to finish...");
         
-        //producer.flushSync();
+        producer.flushSync();
         
         //log.info("All records complete.");
         
         // This kills the child process and shuts down the threads managing it.
-        //producer.destroy();
+        producer.destroy();
         //log.info("Finished.");
         
-        //System.out.println("How are you?");
+        
 	}
 	
 	/*public void readRecordsAndSubmit(JSONObject jsonObject)

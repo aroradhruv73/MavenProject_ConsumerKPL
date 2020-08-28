@@ -41,13 +41,13 @@ public class SampleProducerConfig {
      *
      * @see {@link KinesisProducerConfiguration#setRecordTtl(long)}
      */
-    private static final int RECORDS_PER_SECOND_DEFAULT = 5;  //was set to 500
+    private static final int RECORDS_PER_SECOND_DEFAULT = 50;  //was set to 500
 
     /**
      * Change this to your stream name.
      */
     //public static final String STREAM_NAME_DEFAULT = "KPLStream";
-    public static final String STREAM_NAME_DEFAULT = "testingKPLStream";
+    public static final String STREAM_NAME_DEFAULT = "NewKPLStream";  //"testingKPLStream";
 
     /**
      * Change this to the region you are using.

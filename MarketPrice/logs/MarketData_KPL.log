@@ -1,0 +1,213 @@
+[INFO ] 2020-09-16 18:52:15.898 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-09-16 18:52:16.978 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-09-16 18:52:17.054 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-09-28 18:18:07.004 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-09-28 18:18:40.616 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-09-28 18:18:50.718 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-09-28 18:18:51.796 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-09-28 18:18:51.864 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-09-28 18:18:51.871 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-09-28 18:19:05.851 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-10-06 10:23:35.706 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-10-06 10:23:45.607 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-10-06 10:23:46.664 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-10-06 10:23:46.728 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-10-06 10:23:46.728 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-10-06 10:24:06.009 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 21:21:27.246 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:21:39.850 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:28:14.821 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:28:26.107 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:28:27.215 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:28:28.380 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:28:29.566 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:28:30.765 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:28:31.968 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:28:33.106 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:03.243 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:30:13.195 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:30:14.270 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:15.452 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:16.622 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:17.788 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:18.973 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:20.441 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:21.608 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:22.714 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:24.139 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:25.260 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:26.352 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:30:26.425 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 21:30:26.425 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 21:30:52.505 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 21:43:45.715 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:44:11.602 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:44:12.788 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:44:13.977 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:44:15.212 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:44:16.338 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:44:16.412 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 21:44:16.412 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 21:45:09.082 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:45:19.604 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:45:20.778 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:45:21.976 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:45:22.064 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 21:45:22.064 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 21:45:49.977 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 21:52:25.667 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 21:52:36.250 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 21:52:37.436 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 21:52:37.514 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 21:52:37.515 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 21:53:08.084 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 22:51:49.498 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 22:52:01.170 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 22:52:02.244 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:52:03.354 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:52:04.523 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:52:04.593 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 22:52:04.593 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 22:52:32.733 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 22:54:09.477 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 22:54:19.754 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 22:54:20.895 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:54:22.064 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:54:22.135 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 22:54:22.136 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 22:54:44.215 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 22:58:39.085 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 22:58:49.782 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-05 22:58:50.967 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:58:52.055 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 22:58:52.271 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 22:58:52.271 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 22:59:12.278 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-05 23:18:00.176 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[ERROR] 2020-11-05 23:18:11.265 [main] Consumer - Error during the submission of Athena query
+software.amazon.awssdk.services.athena.model.InvalidRequestException: line 1:45: mismatched input 'IN' expecting {<EOF>, 'GROUP', 'ORDER', 'HAVING', 'LIMIT', 'OR', 'AND', 'UNION', 'EXCEPT', 'INTERSECT'} (Service: Athena, Status Code: 400, Request ID: 4cf0c63c-0e06-42ca-984a-d2b2ea9a75c4, Extended Request ID: null)
+	at software.amazon.awssdk.core.internal.http.CombinedResponseHandler.handleErrorResponse(CombinedResponseHandler.java:123) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.CombinedResponseHandler.handleResponse(CombinedResponseHandler.java:79) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.CombinedResponseHandler.handle(CombinedResponseHandler.java:59) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.CombinedResponseHandler.handle(CombinedResponseHandler.java:40) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.HandleResponseStage.execute(HandleResponseStage.java:40) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.HandleResponseStage.execute(HandleResponseStage.java:30) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptTimeoutTrackingStage.execute(ApiCallAttemptTimeoutTrackingStage.java:73) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptTimeoutTrackingStage.execute(ApiCallAttemptTimeoutTrackingStage.java:42) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.TimeoutExceptionHandlingStage.execute(TimeoutExceptionHandlingStage.java:77) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.TimeoutExceptionHandlingStage.execute(TimeoutExceptionHandlingStage.java:39) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptMetricCollectionStage.execute(ApiCallAttemptMetricCollectionStage.java:50) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallAttemptMetricCollectionStage.execute(ApiCallAttemptMetricCollectionStage.java:36) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:64) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.RetryableStage.execute(RetryableStage.java:34) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:56) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.StreamManagingStage.execute(StreamManagingStage.java:36) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.executeWithTimer(ApiCallTimeoutTrackingStage.java:80) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:60) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallTimeoutTrackingStage.execute(ApiCallTimeoutTrackingStage.java:42) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:48) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ApiCallMetricCollectionStage.execute(ApiCallMetricCollectionStage.java:31) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.RequestPipelineBuilder$ComposingRequestPipelineStage.execute(RequestPipelineBuilder.java:206) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:37) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.pipeline.stages.ExecutionFailureExceptionReportingStage.execute(ExecutionFailureExceptionReportingStage.java:26) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.http.AmazonSyncHttpClient$RequestExecutionBuilderImpl.execute(AmazonSyncHttpClient.java:193) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.invoke(BaseSyncClientHandler.java:128) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.doExecute(BaseSyncClientHandler.java:154) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.lambda$execute$1(BaseSyncClientHandler.java:107) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.measureApiCallSuccess(BaseSyncClientHandler.java:162) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.internal.handler.BaseSyncClientHandler.execute(BaseSyncClientHandler.java:91) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.core.client.handler.SdkSyncClientHandler.execute(SdkSyncClientHandler.java:45) ~[sdk-core-2.14.2.jar:?]
+	at software.amazon.awssdk.awscore.client.handler.AwsSyncClientHandler.execute(AwsSyncClientHandler.java:55) ~[aws-core-2.14.2.jar:?]
+	at software.amazon.awssdk.services.athena.DefaultAthenaClient.startQueryExecution(DefaultAthenaClient.java:2152) ~[athena-2.14.2.jar:?]
+	at EMAConsumer.Consumer.submitAthenaQuery(Consumer.java:613) [classes/:?]
+	at EMAConsumer.Consumer.main(Consumer.java:460) [classes/:?]
+[INFO ] 2020-11-05 23:19:25.348 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-05 23:19:36.124 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:37.694 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:38.772 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:39.850 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:40.925 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:42.001 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:43.079 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:44.155 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:45.227 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:46.303 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-05 23:19:46.376 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-05 23:19:46.376 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-05 23:19:47.991 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-06 13:56:29.449 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 13:58:32.067 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-06 13:58:33.142 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-06 13:58:34.294 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-06 13:58:34.365 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-06 13:58:34.365 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-06 14:04:58.553 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 14:05:24.297 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-06 14:05:25.411 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-06 14:05:25.480 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-06 14:05:25.481 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-06 14:15:42.704 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 14:16:11.229 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 14:18:03.439 [main] Consumer - Current Status is: QUEUED
+[INFO ] 2020-11-06 14:18:04.625 [main] Consumer - Current Status is: RUNNING
+[INFO ] 2020-11-06 14:18:04.704 [main] Consumer - Current Status is: SUCCEEDED
+[INFO ] 2020-11-06 14:18:04.705 [main] Consumer - end of waitForQueryToComplete
+[INFO ] 2020-11-06 14:18:54.609 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-06 14:23:45.673 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 14:23:53.826 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-06 14:24:46.691 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-06 14:24:54.451 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-20 15:25:13.574 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:25:34.865 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:27:02.308 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:28:39.059 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:28:46.442 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-20 15:29:37.547 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:50:44.339 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:51:38.085 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 15:51:46.873 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-20 16:37:13.719 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-20 16:37:23.374 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-25 08:59:22.813 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 09:08:05.485 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 13:42:56.282 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[ERROR] 2020-11-25 13:43:42.446 [main] AppClient - Failed to query EDP-RT service discovery. Error text: failed to submit authorization request, exception = Read timed out
+[ERROR] 2020-11-25 13:43:42.446 [main] Consumer - Both hostname and port are not avaiable for establishing a connection with ERT in cloud. Exiting...
+[INFO ] 2020-11-25 13:46:48.223 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 14:15:55.055 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 16:38:42.044 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 17:12:48.204 [main] Consumer - keyfile path is: c://KeyStore//keystore.jks
+[INFO ] 2020-11-25 17:42:58.054 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-25 17:46:50.439 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 14:39:05.758 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 14:44:48.765 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 15:00:39.613 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 15:00:49.134 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-26 15:20:36.285 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 15:20:46.598 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-26 16:08:51.211 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 16:10:15.698 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-26 16:10:25.166 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-29 21:16:26.612 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-29 21:16:50.767 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-30 08:37:09.302 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-30 08:37:18.332 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-11-30 08:48:52.947 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-11-30 08:49:03.145 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-07 15:41:02.979 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:41:12.881 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-07 15:55:26.768 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:57:39.178 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:57:48.358 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-07 15:58:04.319 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:58:14.933 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:59:14.460 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-07 15:59:25.208 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-08 13:07:24.049 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-08 13:07:39.034 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-08 13:08:10.676 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks
+[INFO ] 2020-12-08 13:08:20.368 [main] Consumer - Registered the Omm Client
+[INFO ] 2020-12-08 13:08:36.615 [main] Consumer - keyfile path is: c:\KeyStore\keystore.jks

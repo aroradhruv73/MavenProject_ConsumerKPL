@@ -8,9 +8,9 @@
 	<version>0.2</version>
 	<dependencies>
 		<dependency>
-			<groupId>com.thomsonreuters.ema</groupId>
+			<groupId>com.refinitiv.ema</groupId>
 			<artifactId>ema</artifactId>
-			<version>3.5.0.0</version>
+			<version>3.6.0.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -127,7 +127,11 @@
 			<artifactId>hibernate-validator-annotation-processor</artifactId>
 			<version>6.0.18.Final</version>
 		</dependency>
-
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>athena</artifactId>
+			<version>2.14.2</version>
+		</dependency>
 	</dependencies>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
